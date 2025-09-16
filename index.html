@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BATMAN</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libertinus+Keyboard&display=swap" rel="stylesheet">    
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: hidden;
+
+            /* Dark sky background */
+            background: black;
+        }
+
+        /* Twinkling stars effect */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+            animation: twinkle 20s linear infinite;
+            z-index: -2;
+        }
+
+        @keyframes twinkle {
+            from { background-position: 0 0; }
+            to   { background-position: -1000px 1000px; }
+        }
+
+        /* Moving gradient glow (aurora/night effect) */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(-45deg, rgba(13,13,13,0.7), rgba(26,26,64,0.7), rgba(0,0,0,0.7), rgba(102,0,0,0.6));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .batman {
+            width: 500px;
+            margin-top: 2%;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        p {
+            font-family: "Roboto", sans-serif;
+            font-weight: 600;
+            font-size: 80px;
+            margin-top: 20px;
+            letter-spacing: 10px;
+            text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 40px #ffcc00;
+
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid #ffcc00;
+
+            width: 0;
+            animation: typing 4s steps(12) forwards, blink 0.7s step-end infinite;
+            z-index: 1;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .quote {
+            font-family: "Libertinus Keyboard", serif;
+            font-size: 24px;
+            margin: 20px;
+            font-style: italic;
+            color: #f0f0f0;
+            text-shadow: 1px 1px 2px black;
+            z-index: 1;
+        }
+
+        a {
+            font-family: "Libertinus Keyboard", serif;
+            font-size: 40px;
+            text-shadow: 1px 1px 1px black;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        a:link { color: gray; }
+        a:visited { color: white; }
+        a:hover { color: rgb(26, 190, 205); }
+        a:active { color: rgb(177, 13, 13); }
+
+        .outter_div {
+            margin-top: 3%;
+            border: 3px solid white;
+            padding: 20px;
+            border-radius: 12px;
+            width: fit-content;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .inner_div {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .inner_div img {
+            width: 220px;
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid #d9e14d;
+            transition: transform 1s ease, box-shadow 1s ease;
+        }
+
+        .inner_div img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 25px rgba(255, 204, 0, 0.9);
+        }
+
+        .btn {
+            margin: 30px;
+            padding: 12px 30px;
+            font-size: 22px;
+            font-family: "Roboto", sans-serif;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background: #ffcc00;
+            color: black;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ffcc00;
+        }
+
+        /* Flying bats */
+        .bat {
+            position: absolute;
+            top: -100px;
+            font-size: 40px;
+            animation: fly 12s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes fly {
+            0% { transform: translateX(-10%) translateY(0); }
+            50% { transform: translateX(100vw) translateY(50vh) rotate(180deg); }
+            100% { transform: translateX(-10%) translateY(0); }
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 15px;
+            font-size: 18px;
+            background: rgba(0,0,0,0.7);
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Batman Logo -->
+    <img class="batman" src="images/original-27501c628a027fb47e574d1006748478.gif" alt="Batman Logo">
+    
+    <!-- Animated Heading -->
+    <p>ARKHAM CITY</p>
+
+    <!-- Hero Quote -->
+    <div class="quote">“I am vengeance. I am the night. I am Batman.”</div>
+
+    <!-- Link -->
+    <a target="_blank" href="https://www.dc.com/">DC COMICS</a>
+
+    <!-- Button -->
+    <a href="https://www.youtube.com/watch?v=jXrFsn9pcZY" target="_blank">
+        <button class="btn">▶ Watch Batman Trailer</button>
+    </a>
+    
+    <!-- Batman Images -->
+    <div class="outter_div">
+        <div class="inner_div">
+            <img src="images/images (1).jpeg" alt="Batman 1">
+            <img src="images/images (2).jpeg" alt="Batman 2">
+        </div>
+    </div>
+
+    <!-- Flying Bats -->
+    <div class="bat">🦇</div>
+    <div class="bat" style="animation-delay: 3s;">🦇</div>
+    <div class="bat" style="animation-delay: 6s;">🦇</div>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 Arkham City | 🦇 Gotham Knights
+    </footer>
+</body>
+</html>
